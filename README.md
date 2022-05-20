@@ -1,4 +1,4 @@
-# Steps to run Rust cross compiled for ARM on qemu ARM emulator
+## Steps to run Rust cross compiled for ARM on qemu ARM emulator
 
 Install qemu with brew
 Install rustup from Rust website
@@ -21,15 +21,14 @@ Run cargo build to build
 
 Run cargo readobj --bin hello-rust -- --file-headers to verify ARM executable
 
-Run to have qemu run ARM executable on lm3s6965evb board
-qemu-system-arm \                                                                
-  -cpu cortex-m3 \
-  -machine lm3s6965evb \
-  -nographic \
-  -semihosting-config enable=on,target=native \
-  -kernel target/thumbv7m-none-eabi/debug/hello-rust
+Run to have qemu run ARM executable on lm3s6965evb board  
+qemu-system-arm \\  
+  -cpu cortex-m3 \\  
+  -machine lm3s6965evb \\  
+  -nographic \\  
+  -semihosting-config enable=on,target=native \\  
+  -kernel target/thumbv7m-none-eabi/debug/hello-rust  
 
-
-Run echo $? to verify exit code is 0 for successful exit.
+Run echo $? to verify exit code is 0 for successful exit.  
 
 ![Success](HelloRust.png)
